@@ -31,7 +31,7 @@ const processPNG = (data, bits, method, cb) => {
 
 const processJPG = (data, bits, method, cb) => {
   try {
-    const decoded = jpeg.decode(data);
+    const decoded = jpeg.decode(data, { maxMemoryUsageInMB: 1024 });
     const res = blockhash(decoded, bits, method ? 2 : 1);
     cb(null, res);
   } catch (e) {
